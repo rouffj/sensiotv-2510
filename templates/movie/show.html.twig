@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {% set hello = 'hello you' %}
+{% endblock %}
+
 {% block content %}
+    {{ dump() }}
     <section id="central-section" class="bg-light p-5">
         <div class="container jumbotron p-5 img-rounded">
             <div class="row mb-5">

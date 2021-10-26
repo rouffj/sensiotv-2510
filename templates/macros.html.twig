@@ -46,11 +46,10 @@
     </tr>
 {% endmacro %}
 
-
 {% macro render_imported_movie(movie) %}
     <div class="row">
         <div class="col-lg-3">
-            <a href="/movie/{{ movie.id }}" title="The Matrix Reloaded" class="album-link">
+            <a href="/movie/{{ movie.id }}" title="{{ movie.title }}" class="album-link">
                 <img height="209" width="140" src="{{ movie.poster }}">
             </a>
         </div>

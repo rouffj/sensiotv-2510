@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * @Route("/movie", name="movie_", methods={"GET"})
@@ -33,6 +34,9 @@ class MovieController extends AbstractController
      */
     public function import(string $id, OmdbApi $omdbApi, EntityManagerInterface $manager): Response
     {
+        if (!$this->isGranted('ROLE_MOVIE_IMPORT')) {
+            throw new AccessDeniedException('You should have the role ROLE_MOVIE_IMPORT to access this page');
+        }
         $movieData = $omdbApi->requestOneById($id);
         $movie = Movie::fromApi($movieData);
         $manager->persist($movie);
@@ -45,8 +49,11 @@ class MovieController extends AbstractController
     /**
      * @Route("/{id}", name="show", requirements={"id": "\d+"}, defaults={"id": 1})
      */
-    public function show(int $id): Response
+    public function show(int $id, Movie $movie): Response
     {
+        //$this->denyAccessUnlessGranted('PROJECT.EDIT', $project);
+        $this->denyAccessUnlessGranted('MOVIE_SHOW', $movie, 'You can only watch movies younger than you');
+
         return $this->render('movie/show.html.twig', [
             'id' => $id,
         ]);

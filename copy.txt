@@ -1,0 +1,10 @@
+### src/Event/UserRegisteredEvent.php ###
+
+### In your code ###
+<?php
+
+
+    public function register(EventDispatcherInterface $eventDispatcher)
+    {
+    }
+

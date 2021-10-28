@@ -1,3 +1,6 @@
+{% import 'macros.html.twig' as macros %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +19,7 @@
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
     <!-- Personal CSS -->
+    {{ encore_entry_link_tags('app') }}
     <link rel="stylesheet" type="text/css" href="/assets/css/sensiotv-theme.min.css">
     
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/sensiotv-favicon.ico">
@@ -41,9 +45,7 @@
     </li>
 </ul>
 <ul class="navbar-nav text-center">
-                <li class="nav-item active"><a class="nav-link" href="/register" title="Register or log in"><i class="fas fa-plus-square"></i></a></li>
-        <li class="nav-item active"><a class="nav-link" href="/login" title="Register or log in"><i class="fas fa-user"></i></a></li>
-    
+    {{ macros.login_section }}
 </ul>
 
 
@@ -89,6 +91,7 @@
 </footer>
 
 <!-- Vendor JS -->
+    {{ encore_entry_script_tags('app') }}
     <script src="https://kit.fontawesome.com/8d75946265.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
